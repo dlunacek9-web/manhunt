@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; worker-src blob:; connect-src wss://broker.hivemq.com:8884 wss://broker.emqx.io:8084; img-src 'self' data: https://tile.openstreetmap.org; style-src 'self' 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<meta name="theme-color" content="#10140f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Manhunt">
+<title>Manhunt</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="vendor/leaflet.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="view-home">
+<section id="home">
+  <h1>MAN<span>HUNT</span></h1>
+  <p class="sub">2 lovci. 3 schovávači. Každou minutu prozrazená poloha.</p>
+  <label for="name">Tvoje jméno</label>
+  <input id="name" maxlength="16" autocomplete="off" placeholder="např. Dan">
+  <button class="primary" data-act="create">Založit novou hru</button>
+  <div class="or">nebo</div>
+  <label for="code">Kód hry</label>
+  <input id="code" maxlength="9" autocomplete="off" autocapitalize="characters" placeholder="ABCD-2345">
+  <button data-act="join">Připojit se</button>
+  <p id="home-err" class="err" role="alert"></p>
+</section>
+
+<main id="play">
+  <div id="banner" role="status"></div>
+  <div id="mapwrap">
+    <div id="map"></div>
+    <div id="mapbtns">
+      <button data-act="fit-me" aria-label="Přiblížit na mě">Já</button>
+      <button data-act="fit-all" aria-label="Zobrazit celou hru">Vše</button>
+    </div>
+    <div id="toast" role="status"></div>
+  </div>
+  <div id="panel"></div>
+</main>
+
+<section id="end"></section>
+
+<script src="vendor/leaflet.js"></script>
+<script src="vendor/mqtt.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
